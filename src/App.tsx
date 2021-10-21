@@ -5,6 +5,8 @@ import "./App.css";
 //Components
 import Categories from "./components/Categories";
 import Category from "./components/Category";
+//Assets
+import purrLogo from './assets/Logo.svg'
 
 //// here fetch to prop drill to every component
 
@@ -26,6 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
+        <div><img src={purrLogo} alt="Purr App Logo" style={{}} /></div>
         <Route component={Categories} path='/'/>
       </div>
     </BrowserRouter>

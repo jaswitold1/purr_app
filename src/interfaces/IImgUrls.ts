@@ -1,5 +1,5 @@
 export default interface IImgUrls {
-  body:{
+  body:[{
     breeds: []
     categories: [
       {
@@ -11,8 +11,8 @@ export default interface IImgUrls {
     id: string,
     url: string,
     width: number
-  }
-  categoryID:number
+  }]
+  categoryName:string
 
     
 }

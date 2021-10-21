@@ -20,7 +20,7 @@ useEffect(() => {
     categories.forEach(element => {
         fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${element.id}`)
         .then(resp => resp.json())
-        .then(resp => setImgUrls(prev => [...prev,[{body:resp,categoryID:element.id}]]))
+        .then(resp => setImgUrls(prev => [...prev,[{body:resp,categoryName:element.name}]]))
 
 }) 
         
@@ -34,10 +34,19 @@ useEffect(() => {
         
     return (
         <ul>
-           
+           {
+               imgUrls.map(element => {
+                   return (
+                       <li key={element[0].categoryName}>
+                           <img src={element[0].body[0].url} alt="" style={{width:'100px',height:'100px'}} />
+                           <span>{element[0].categoryName}</span>
+                       </li>
+                   )
+               }) 
+           }
+        </ul>
             
 
-        </ul>
     )
 }
 
