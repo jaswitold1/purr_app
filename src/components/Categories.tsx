@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react';
+import {Link} from 'react-router-dom'
 //interface
 import  ICategories  from '../interfaces/ICategories';
 import IImgUrls from '../interfaces/IImgUrls';
@@ -37,10 +38,10 @@ useEffect(() => {
            {
                imgUrls.map(element => {
                    return (
-                       <li key={element[0].categoryName}>
+                       <Link to={{pathname:`${element[0].categoryName}`,state:{categories:true}}} key={element[0].categoryName}>
                            <img src={element[0].body[0].url} alt="" style={{width:'100px',height:'100px'}} />
                            <span>{element[0].categoryName}</span>
-                       </li>
+                       </Link>
                    )
                }) 
            }

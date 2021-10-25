@@ -1,27 +1,26 @@
+import { useLocation } from "react-router"
+import ICategories from "../interfaces/ICategories"
 
 
 
 
-
-const Category:React.FC<Ihej> = ({props}) =>  {
-   console.log(props.name);
-   
+const Category:React.FC = () =>  {
+  
+   let location = useLocation()
+   if (location) {
+     console.log(location.state);
+     
+   }
     
     return (
 
         <div>
-            {props.name}
+           
            
         </div>
     )
 }
 
-interface Ihej {
-  props: {
-    name:string
-    surname:string
 
-  }
-}
 
 export default Category

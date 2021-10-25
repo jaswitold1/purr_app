@@ -13,23 +13,14 @@ import purrLogo from './assets/Logo.svg'
 /// first things ROUTING
 
 function App() {
-  interface Ihej {
-    props: {
-      name: string;
-      surname: string;
-    };
-  }
 
-  const hej: Ihej["props"] = {
-    name: "aa",
-    surname: "bb",
-  };
 
   return (
     <BrowserRouter>
       <div className='App'>
-        <div><img src={purrLogo} alt="Purr App Logo" style={{}} /></div>
-        <Route component={Categories} path='/'/>
+        <div><img src={purrLogo} alt="Purr App Logo" /></div>
+        <Route exact component={Categories} path='/'/>
+        <Route exact component={Category} path='/:Category'/>
       </div>
     </BrowserRouter>
   );
