@@ -1,16 +1,25 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router"
-import ICategories from "../interfaces/ICategories"
+
 
 
 
 
 const Category:React.FC = () =>  {
   
-   let location = useLocation()
+   const location = useLocation()
+   const [categoryImgs, setCategoryImgs] = useState([])
+
    if (location) {
      console.log(location.state);
      
    }
+   useEffect(() => {
+     ////interface for images
+     ////fetch for images
+     ////id from location.state
+     
+   }, [])
     
     return (
 
