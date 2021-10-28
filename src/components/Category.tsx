@@ -10,6 +10,11 @@ const Category:React.FC = () =>  {
    const location = useLocation()
    const [categoryImgs, setCategoryImgs] = useState([])
 
+   useEffect(() => {
+     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=15&limit=10`)
+     
+   }, [])
+
    if (location) {
      console.log(location.state);
      

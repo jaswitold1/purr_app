@@ -38,7 +38,7 @@ useEffect(() => {
            {
                imgUrls.map(element => {
                    return (
-                       <Link to={{pathname:`${element[0].categoryName}`,state:{categories:true}}} key={element[0].categoryName}>
+                       <Link to={{pathname:`${element[0].categoryName}`,state:element[0].body[0].categories[0].id}} key={element[0].categoryName}>
                            <img src={element[0].body[0].url} alt="" style={{width:'100px',height:'100px'}} />
                            <span>{element[0].categoryName}</span>
                        </Link>
