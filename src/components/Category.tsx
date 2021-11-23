@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router"
-//interface
+//Interfaces
 import ICategoryImgs from "../interfaces/ICategoryImgs";
-
-
+// Router
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router"
 
 
 const Category:React.FC = () =>  {
+
+   let history = useHistory()
   
    const location = useLocation()
    const [categoryImgs, setCategoryImgs] = useState<ICategoryImgs[]>([])
@@ -21,7 +23,8 @@ const Category:React.FC = () =>  {
 
    //// incrementing categoryImgs array index to show photo
    const categoryImgsIncrement = () => {
-      categoryImgsCount > 9 ? console.log('STATS')
+      categoryImgsCount >= 9 ? history.push('/Stats')
+      
        : setCategoryImgsCount(prev => prev +1)
    }
    if (categoryImgs) {
@@ -34,6 +37,7 @@ const Category:React.FC = () =>  {
 
         <div>
            <p>Would You pet it?</p>
+           <button onClick={categoryImgsIncrement}>increment {categoryImgsCount}</button>
            
         </div>
     )
