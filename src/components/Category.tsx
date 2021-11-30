@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 //Assets
 import DontPet from '../assets/DontPet.svg'
 import Pet from '../assets/Pet.svg'
@@ -36,7 +36,7 @@ const Category:React.FC = () =>  {
      console.log(categoryImgs);
      
    }
-  
+   
     ///// zastanowic sie jak wyrenderowac w /stats liczby z category
     /////context API ??
     /////albo nie zmieniac routa na stats i odpada renderowanie 

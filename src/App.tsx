@@ -8,7 +8,8 @@ import Category from "./components/Category";
 import Stats from "./components/Stats";
 //Assets
 import purrLogo from './assets/Logo.svg'
-
+//Context
+import { StatsContext, StatsProvider } from "./Context/StatsContext";
 
 
 /// first things ROUTING
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <StatsProvider>
       <div className='App'>
         <div><img src={purrLogo} alt="Purr App Logo" /></div>
         
@@ -32,6 +34,7 @@ function App() {
         
         <Route exact component={Stats} path='/Stats'/>
       </div>
+      </StatsProvider>
     </BrowserRouter>
         
         
