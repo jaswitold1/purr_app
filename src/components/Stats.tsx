@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+//Context
+import { StatsContext } from '../Context/StatsReducer'
 
 const Stats:React.FC = () => {
+    const stats = useContext(StatsContext)
     return (
         <div>
-            Stats
+            {stats?.state.seen}
         </div>
     )
 }
