@@ -32,16 +32,52 @@ const Category:React.FC = () =>  {
    const {state} = useContext(StatsContext)
    
   //// incrementing categoryImgs array index to show photo
-   const categoryImgNext = () => {
-    dispatch('SEEN')
-    setCategoryImgsCount(prev => prev+1)
+   ////pet functionality
+   const pet = () => {
+    
+    if (state?.seen < 9) {
+       
+      dispatch('PETTED')
+      dispatch('SEEN')
+      setCategoryImgsCount(prev => prev+1)
+        
+      }  else {
+        history.push('/Stats') 
+        setCategoryImgsCount(0)
+      }
+      
    }
-   const categoryImgsIncrement = () => {
-     
-      state?.seen >= 9 ? 
-      history.push('/Stats') :
-      categoryImgNext()
+   ////skip functionality
+   const skip = () => {
+    
+    if (state?.seen < 9) {
+      
+      dispatch('SKIPPED')
+      dispatch('SEEN')
+      setCategoryImgsCount(prev => prev+1)
+        
+      }  else {
+        history.push('/Stats') 
+        setCategoryImgsCount(0)
+      }
+      
    }
+   ////didnt pet
+   const didntPet = () => {
+    
+    if (state?.seen < 9) {
+      
+      dispatch('DIDNTPET')
+      dispatch('SEEN')
+      setCategoryImgsCount(prev => prev+1)
+        
+      }  else {
+        history.push('/Stats') 
+        setCategoryImgsCount(0)
+      }
+      
+   }
+  
    
   
     return (
@@ -53,9 +89,9 @@ const Category:React.FC = () =>  {
            }
            <span>Cat {categoryImgsCount+1}/10</span>
            <div>
-             <img src={Pet} onClick={categoryImgsIncrement}></img>
-             <img src={Skip} onClick={categoryImgsIncrement}></img>
-             <img src={DontPet} onClick={categoryImgsIncrement}></img>
+             <img src={Pet} onClick={pet}></img>
+             <img src={Skip} onClick={skip}></img>
+             <img src={DontPet} onClick={didntPet}></img>
            </div>
            
            
