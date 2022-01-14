@@ -9,7 +9,7 @@ import Stats from "./components/Stats";
 //Assets
 import purrLogo from './assets/Logo.svg'
 //Context
-import { StatsContext, StatsProvider } from "./Context/StatsReducer";
+import { StatsProvider } from "./Context/StatsReducer";
 
 
 /// first things ROUTING

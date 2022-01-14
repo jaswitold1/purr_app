@@ -32,11 +32,15 @@ const Category:React.FC = () =>  {
    const {state} = useContext(StatsContext)
    
   //// incrementing categoryImgs array index to show photo
+   const categoryImgNext = () => {
+    dispatch('SEEN')
+    setCategoryImgsCount(prev => prev+1)
+   }
    const categoryImgsIncrement = () => {
      
       state?.seen >= 9 ? 
       history.push('/Stats') :
-      dispatch('SEEN')
+      categoryImgNext()
    }
    
   
