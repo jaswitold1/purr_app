@@ -3,4 +3,6 @@ export default interface IStatsContext {
    didntPet:number
    petted:number
    skipped:number 
+   path:string
+   categoryID: number | string
 }

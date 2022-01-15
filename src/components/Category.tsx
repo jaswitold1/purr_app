@@ -25,20 +25,26 @@ const Category:React.FC = () =>  {
      fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${location.state}&limit=10`)
      .then(resp => resp.json())
      .then(resp => setCategoryImgs(resp))
+    console.log(location.state);
+
+  
+    
+  //pathname for further use in stats - restart same category button
+   dispatch({type:'PATH'})
      
    }, [location])
   //useContext for incrementing seen pictures and updating state
    const {dispatch} = useContext(StatsContext)
    const {state} = useContext(StatsContext)
-   
+ 
   //// incrementing categoryImgs array index to show photo
    ////pet functionality
    const pet = () => {
     
     if (state?.seen < 9) {
        
-      dispatch('PETTED')
-      dispatch('SEEN')
+      dispatch({type:'PETTED'})
+      dispatch({type:'SEEN'})
       setCategoryImgsCount(prev => prev+1)
         
       }  else {
@@ -52,8 +58,8 @@ const Category:React.FC = () =>  {
     
     if (state?.seen < 9) {
       
-      dispatch('SKIPPED')
-      dispatch('SEEN')
+      dispatch({type:'SKIPPED'})
+      dispatch({type:'SEEN'})
       setCategoryImgsCount(prev => prev+1)
         
       }  else {
@@ -67,8 +73,8 @@ const Category:React.FC = () =>  {
     
     if (state?.seen < 9) {
       
-      dispatch('DIDNTPET')
-      dispatch('SEEN')
+      dispatch({type:'DIDNTPET'})
+      dispatch({type:'SEEN'})
       setCategoryImgsCount(prev => prev+1)
         
       }  else {
@@ -78,6 +84,7 @@ const Category:React.FC = () =>  {
       
    }
   
+   console.log(state);
    
   
     return (

@@ -2,7 +2,7 @@ import React, {createContext,useReducer} from 'react'
 import type {ReactNode} from 'react'
 import IStatsContext from '../interfaces/IStatsContext';
 
-export type Action = 'SEEN' | 'PETTED' | 'DIDNTPET' | 'SKIPPED' | 'RESET'
+export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:'SKIPPED'} | {type:'RESET'} | {type:'PATH'} | {type:'CATEGORYID',payload:number}
 export type State = IStatsContext
 
 const defaultState:IStatsContext = {
@@ -10,12 +10,18 @@ const defaultState:IStatsContext = {
     didntPet:0,
     petted:0,
     skipped:0 ,
+    path:'/',
+    categoryID:0
+
 }
+
+
 
 export const StatsContext = createContext<{state:State,dispatch:React.Dispatch<Action>} >({state:defaultState, dispatch:()=>{}})
 
 function StatsReducer(state: State,action: Action ) {
-    switch (action) {
+    
+    switch (action.type) {
         case 'SEEN':
             return {
                 ...state,
@@ -38,6 +44,16 @@ function StatsReducer(state: State,action: Action ) {
             }
             case 'RESET':
             return defaultState
+            case 'PATH':
+            return {
+                ...state,
+                path: window.location.pathname
+            }
+            case 'CATEGORYID':
+            return {
+                ...state,
+                categoryID: action.payload
+            }
         
         default:
             return state    

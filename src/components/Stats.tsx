@@ -10,10 +10,16 @@ const Stats:React.FC = () => {
     
     //useContext for dispatching action
     const {dispatch} = useContext(StatsContext)
+    
     ////start new - purge stats
     const startNew = () => {
-        dispatch('RESET')
+        dispatch({type:'RESET'})
         history.push('/')
+    }
+    ////start existing category - purge stats
+    const startExisting = () => {
+        history.push(stats.state.path)
+        dispatch({type:'RESET'})
     }
 
     return (
@@ -25,7 +31,7 @@ const Stats:React.FC = () => {
             <li>skipped {stats?.state.skipped}</li>
             </div>
             <div>
-                <button>Restart the same category</button>
+                <button onClick={() => startExisting()}>Restart the same category</button>
                 <button onClick={() => startNew()}>Start new category</button>
             </div>
         </div>
