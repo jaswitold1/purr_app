@@ -2,7 +2,7 @@ import React, {createContext,useReducer} from 'react'
 import type {ReactNode} from 'react'
 import IStatsContext from '../interfaces/IStatsContext';
 
-export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:'SKIPPED'} | {type:'RESET'} | {type:'PATH'} | {type:'CATEGORYID',payload:any}
+export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:'SKIPPED'} | {type:'RESET'} | {type:'PATH'} | {type:'CATEGORYID',payload:number}
 export type State = IStatsContext
 
 const defaultState:IStatsContext = {

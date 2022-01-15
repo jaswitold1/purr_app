@@ -4,5 +4,5 @@ export default interface IStatsContext {
    petted:number
    skipped:number 
    path:string
-   categoryID: number | string
+   categoryID: number 
 }

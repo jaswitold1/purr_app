@@ -9,6 +9,10 @@ import { StatsContext } from '../Context/StatsReducer';
 const Categories:React.FC = () => {
 const [categories, setCategories] = useState<ICategories[]>([])
 const [imgUrls, setImgUrls] = useState<IImgUrls[][]>([])
+
+///dispatch for categoryID
+const {dispatch} = useContext(StatsContext)
+
 /// useEffect fetch for categories
 useEffect(() => {
     fetch('https://api.thecatapi.com/v1/categories')
@@ -30,8 +34,7 @@ useEffect(() => {
         
 }, [categories])
     
-///dispatch for categoryID
-const {dispatch} = useContext(StatsContext)
+
 
 
 
@@ -42,7 +45,7 @@ const {dispatch} = useContext(StatsContext)
            {
                imgUrls.map(element => {
                    return (
-                       <Link to={{pathname:`${element[0].categoryName}`,state:element[0].body[0].categories[0].id}} key={element[0].categoryName} onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}>
+                       <Link to={{pathname:`${element[0].categoryName}`}} key={element[0].categoryName} onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}>
                            <img src={element[0].body[0].url} alt="" style={{width:'100px',height:'100px'}} />
                            <span>{element[0].categoryName}</span>
                        </Link>

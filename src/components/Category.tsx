@@ -21,7 +21,7 @@ const Category:React.FC = () =>  {
    const [categoryImgsCount, setCategoryImgsCount] = useState(0)
    //context state
    const stats = useContext(StatsContext) 
-  //utilised uselocation hook not to repeat code fetching category id
+  
    useEffect(() => {
      fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${stats.state.categoryID}&limit=10`)
      .then(resp => resp.json())
@@ -97,9 +97,9 @@ const Category:React.FC = () =>  {
            }
            <span>Cat {categoryImgsCount+1}/10</span>
            <div>
-             <img src={Pet} onClick={pet}></img>
-             <img src={Skip} onClick={skip}></img>
-             <img src={DontPet} onClick={didntPet}></img>
+             <img alt='pet' src={Pet} onClick={pet}></img>
+             <img alt='skip' src={Skip} onClick={skip}></img>
+             <img alt='dont pet' src={DontPet} onClick={didntPet}></img>
            </div>
            
            
