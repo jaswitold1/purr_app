@@ -25,14 +25,12 @@ const Category:React.FC = () =>  {
      fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${location.state}&limit=10`)
      .then(resp => resp.json())
      .then(resp => setCategoryImgs(resp))
-    console.log(location.state);
-
-  
-    
-  //pathname for further use in stats - restart same category button
-   dispatch({type:'PATH'})
-     
+         
+    //pathname for further use in stats - restart same category button
+      dispatch({type:'PATH'})
+ 
    }, [location])
+ 
   //useContext for incrementing seen pictures and updating state
    const {dispatch} = useContext(StatsContext)
    const {state} = useContext(StatsContext)
