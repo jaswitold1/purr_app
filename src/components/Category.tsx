@@ -93,7 +93,7 @@ const Category:React.FC = () =>  {
         <div>
            <span>Would You pet it?</span>
            {
-             categoryImgs.length >0 ? <img src={categoryImgs[categoryImgsCount].url} alt="" style={{width:'100px',height:'100px'}} /> : "loading"
+             categoryImgs.length >0 ? <img src={categoryImgs[categoryImgsCount].url} alt="" style={{width:'300px',height:'300px'}} /> : "loading"
            }
            <span>Cat {categoryImgsCount+1}/10</span>
            <div>

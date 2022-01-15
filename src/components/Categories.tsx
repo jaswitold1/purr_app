@@ -41,13 +41,18 @@ useEffect(() => {
 
         
     return (
-        <ul>
+        <ul className='categories'>
+        
            {
                imgUrls.map(element => {
                    return (
-                       <Link to={{pathname:`${element[0].categoryName}`}} key={element[0].categoryName} onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}>
-                           <img src={element[0].body[0].url} alt="" style={{width:'100px',height:'100px'}} />
-                           <span>{element[0].categoryName}</span>
+                       <Link to={{pathname:`${element[0].categoryName}`}}
+                             key={element[0].categoryName} 
+                             onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}
+                             style={{display:'flex',justifyContent:'center',alignItems:'end' ,position:'relative',height:'300px',width:'300px',margin:'10px'}}>
+                                 
+                           <span style={{backgroundColor:'white', padding:'10px 30%',marginBottom:'10px', borderRadius:'10px',fontWeight:'bold'}} >{element[0].categoryName}</span>
+                           <img src={element[0].body[0].url} alt="" style={{zIndex:'-1' ,width:'300px',height:'300px',position:'absolute',top:'0',left:'0'}} />
                        </Link>
                    )
                }) 
