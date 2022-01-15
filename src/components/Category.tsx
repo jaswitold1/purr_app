@@ -19,10 +19,11 @@ const Category:React.FC = () =>  {
    const location = useLocation()
    const [categoryImgs, setCategoryImgs] = useState<ICategoryImgs[]>([])
    const [categoryImgsCount, setCategoryImgsCount] = useState(0)
-
+   //context state
+   const stats = useContext(StatsContext) 
   //utilised uselocation hook not to repeat code fetching category id
    useEffect(() => {
-     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${location.state}&limit=10`)
+     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${stats.state.categoryID}&limit=10`)
      .then(resp => resp.json())
      .then(resp => setCategoryImgs(resp))
          
