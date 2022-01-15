@@ -6,7 +6,7 @@ export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:
 export type State = IStatsContext
 
 const defaultState:IStatsContext = {
-    seen:0,
+    seen:1,
     didntPet:0,
     petted:0,
     skipped:0 ,

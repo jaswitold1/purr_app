@@ -27,6 +27,7 @@ const Category:React.FC = () =>  {
      .then(resp => resp.json())
      .then(resp => setCategoryImgs(resp))
          
+         
     //pathname for further use in stats - restart same category button
       dispatch({type:'PATH'})
  
@@ -40,13 +41,13 @@ const Category:React.FC = () =>  {
    ////pet functionality
    const pet = () => {
     
-    if (state?.seen < 9) {
+    if (state?.seen < 10) {
        
       dispatch({type:'PETTED'})
       dispatch({type:'SEEN'})
-      setCategoryImgsCount(prev => prev+1)
-        
+      setCategoryImgsCount(prev => prev+1)  
       }  else {
+        dispatch({type:'PETTED'})
         history.push('/Stats') 
         setCategoryImgsCount(0)
       }
@@ -55,13 +56,13 @@ const Category:React.FC = () =>  {
    ////skip functionality
    const skip = () => {
     
-    if (state?.seen < 9) {
+    if (state?.seen < 10) {
       
       dispatch({type:'SKIPPED'})
       dispatch({type:'SEEN'})
       setCategoryImgsCount(prev => prev+1)
-        
       }  else {
+        dispatch({type:'SKIPPED'})
         history.push('/Stats') 
         setCategoryImgsCount(0)
       }
@@ -70,20 +71,21 @@ const Category:React.FC = () =>  {
    ////didnt pet
    const didntPet = () => {
     
-    if (state?.seen < 9) {
+    if (state?.seen < 10) {
       
       dispatch({type:'DIDNTPET'})
       dispatch({type:'SEEN'})
       setCategoryImgsCount(prev => prev+1)
-        
       }  else {
+        dispatch({type:'DIDNTPET'})
         history.push('/Stats') 
         setCategoryImgsCount(0)
       }
       
    }
   
-   console.log(state);
+   
+  
    
   
     return (
