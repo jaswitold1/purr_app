@@ -13,7 +13,7 @@ html {
   display: flex;
   flex-direction: column;
 }
-.categories.stats {
+.categories {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
