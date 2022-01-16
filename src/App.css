@@ -3,6 +3,7 @@ html {
   background-color: white;
   display: flex;
   justify-content: center;
+  font-family: "Inter", sans-serif;
 }
 
 .App {
