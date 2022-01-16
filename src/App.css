@@ -4,6 +4,7 @@ html {
   display: flex;
   justify-content: center;
 }
+
 .App {
   max-width: 1024px;
   height: 100vh;
@@ -19,9 +20,61 @@ html {
 }
 .logo {
   display: flex;
-  width: 100%;
+  max-width: 1024px;
   justify-content: left;
 }
 .logoImg {
   padding: 10px;
+}
+.pet::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 100, 0, 0.3);
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid green;
+  top: -5px;
+  left: -5px;
+  cursor: pointer;
+}
+.skip::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: rgba(58, 58, 58, 0.3);
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid grey;
+  top: -5px;
+  left: -7px;
+  cursor: pointer;
+}
+.dontpet::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: rgba(100, 0, 0, 0.3);
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid red;
+  top: -6px;
+  left: -6px;
+  cursor: pointer;
+}
+.categoryOutline {
+  width: 300px;
+}
+.categoryImg {
+  width: 300px;
+}
+@media only screen and (min-width: 720px) {
+  .categoryOutline {
+    width: 500px;
+    height: 500px;
+  }
+  .categoryImg {
+    width: 500px;
+    height: 500px;
+  }
 }

@@ -85,26 +85,35 @@ const Category:React.FC = () =>  {
    }
   
    
+   
   
    
   
     return (
-
-        <div>
-           <span>Would You pet it?</span>
+      <div style={{display:"flex",flexDirection:'column',alignItems:'center'}}>
+        <span style={{marginBottom:'10px',width:'100vw'}}>Would You pet it?</span>
+         <div className="categoryOutline" style={ {display:"flex",flexDirection:'column',border:'1px solid lightgrey',borderRadius:'10px'}}>
            {
-             categoryImgs.length >0 ? <img src={categoryImgs[categoryImgsCount].url} alt="" style={{width:'300px',height:'300px'}} /> : "loading"
+             categoryImgs.length >0 ? <img className="categoryImg" src={categoryImgs[categoryImgsCount].url} alt="" style={{borderTopLeftRadius:'10px',borderTopRightRadius:'10px'}} /> : "loading"
            }
-           <span>Cat {categoryImgsCount+1}/10</span>
-           <div>
-             <img alt='pet' src={Pet} onClick={pet}></img>
-             <img alt='skip' src={Skip} onClick={skip}></img>
-             <img alt='dont pet' src={DontPet} onClick={didntPet}></img>
+           <span style={{marginTop:'10px'}}>Cat {categoryImgsCount+1}/10</span>
+           <div style={{display:'flex',justifyContent:'center'}}>
+             <div onClick={pet} style={{margin:'10px',position:'relative'}} className='pet '>
+              <img alt='pet' src={Pet} ></img>
+             </div>
+             <div onClick={skip} style={{margin:'10px',position:'relative'}} className='skip'>
+             <img alt='skip' src={Skip} ></img>
+             </div> 
+             <div onClick={didntPet} style={{margin:'10px',position:'relative'}} className='dontpet'>
+               <img alt='dont pet' src={DontPet} ></img>
+             </div>
+
            </div>
            
            
            
         </div>
+      </div>  
     )
 }
 

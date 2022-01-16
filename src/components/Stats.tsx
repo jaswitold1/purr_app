@@ -24,13 +24,13 @@ const Stats:React.FC = () => {
 
     return (
         <div>
-            <div>
-            <li>seen {stats?.state.seen}</li>
-            <li>petted {stats?.state.petted}</li>
-            <li>didn't pet {stats?.state.didntPet}</li>
-            <li>skipped {stats?.state.skipped}</li>
-            </div>
-            <div>
+            <span>seen {stats?.state.seen}</span>
+                <div>
+                    <li>petted {stats?.state.petted}</li>
+                    <li>didn't pet {stats?.state.didntPet}</li>
+                    <li>skipped {stats?.state.skipped}</li>
+                </div>
+            <div style={{display:'flex',flexDirection:'column'}}>
                 <button onClick={() => startExisting()}>Restart the same category</button>
                 <button onClick={() => startNew()}>Start new category</button>
             </div>
