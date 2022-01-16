@@ -1,8 +1,13 @@
 import React, {useContext} from 'react'
+//Assets
+import DontPet from '../assets/DontPet.svg'
+import Pet from '../assets/Pet.svg'
+import Skip from '../assets/Skip.svg'
 //Context
 import { StatsContext } from '../Context/StatsReducer'
 //Router
 import {useHistory} from 'react-router-dom'
+
 
 const Stats:React.FC = () => {
     const history = useHistory()
@@ -23,16 +28,59 @@ const Stats:React.FC = () => {
     }
 
     return (
-        <div>
-            <span>seen {stats?.state.seen}</span>
-                <div>
-                    <li>petted {stats?.state.petted}</li>
-                    <li>didn't pet {stats?.state.didntPet}</li>
-                    <li>skipped {stats?.state.skipped}</li>
-                </div>
-            <div style={{display:'flex',flexDirection:'column'}}>
-                <button onClick={() => startExisting()}>Restart the same category</button>
-                <button onClick={() => startNew()}>Start new category</button>
+        <div style={{display:'flex',flexDirection:'column',maxWidth:'1024px',width:'100vw'}}>
+            <div style={{display:'flex',justifyContent:'left'}}>
+                <span style={{margin:'10px'}}>Cats seen: {stats?.state.seen}</span>
+            </div>
+                <ul style={{display:'flex',flexWrap:'wrap',justifyContent:'center',maxWidth:'1024px',width:'100vw'}}>
+                    <li style={{borderColor:'green'}} className='stat'>
+                        <div   className='pet statIcon' >
+                            <img alt='pet' src={Pet} ></img>
+                        </div>
+                        <div className='statInfo' >
+                            <span style={{color:'green'}} className='statNumber'>
+                                {stats?.state.petted}
+                            </span>
+                            <span className='statSpan'>
+                                Cats You petted
+                            </span>
+                        </div>
+                    </li>
+                    <li style={{borderColor:'red'}} className='stat'>
+                        <div className='dontpet statIcon'>
+                            <img style={{marginRight:'12px'}} alt='didnt pet' src={DontPet} ></img>
+                        </div>
+                        <div className='statInfo' >
+                            <span style={{color:'red'}} className='statNumber'>
+                                {stats?.state.didntPet}
+                            </span>
+                            <span className='statSpan'>
+                                Cats You didn't pet
+                            </span>
+                        </div>
+                         
+                    </li>
+                    <li style={{borderColor:'gray'}} className='stat'>
+                         <div className='skip statIcon' >
+                            <img alt='skip' src={Skip} ></img>
+                        </div>
+                        <div className='statInfo' >
+                            <span style={{color:'gray'}} className='statNumber'>
+                                {stats?.state.skipped}
+                            </span>
+                            <span className='statSpan'>
+                                Cats You skipped
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            <div style={{display:'flex',flexDirection:'column',alignItems:'center',marginTop:'30px'}}>
+                <button style={{backgroundColor:'orange',color:'white'}} className='button btn-top' onClick={() => startExisting()}>
+                    RESTART THE SAME CATEGORY
+                </button>
+                <button style={{backgroundColor:'white'}} className='button btn-bottom' onClick={() => startNew()}>
+                    START NEW CATEGORY
+                </button>
             </div>
         </div>
         
@@ -40,3 +88,4 @@ const Stats:React.FC = () => {
 }
 
 export default Stats
+
