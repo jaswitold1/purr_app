@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 //Router
 import { BrowserRouter, Route } from "react-router-dom";
 //Styles
@@ -16,6 +17,7 @@ import { StatsProvider } from "./Context/StatsReducer";
 /// first things ROUTING
 
 function App() {
+
 
   return (
     <BrowserRouter>
