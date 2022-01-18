@@ -5,8 +5,10 @@ import Pet from '../assets/Pet.svg'
 import Skip from '../assets/Skip.svg'
 //Interfaces
 import ICategoryImgs from "../interfaces/ICategoryImgs";
+import ICategories from "../interfaces/ICategories";
 // Router
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router"
 //Context
 import { StatsContext } from "../Context/StatsReducer";
 
@@ -15,30 +17,40 @@ const Category:React.FC = () =>  {
 
    let history = useHistory()
   
-   
+ 
    const [categoryImgs, setCategoryImgs] = useState<ICategoryImgs[]>([])
    const [categoryImgsCount, setCategoryImgsCount] = useState(0)
-   const [ids, setIds] = useState([])
+   const [categories, setCategories] = useState<ICategories[]>([])
+   
    //context state
    const stats = useContext(StatsContext) 
- 
+   
    useEffect(() => {
      //pathname for further use in stats - restart same category button
        dispatch({type:'PATH'})
 
      fetch('https://api.thecatapi.com/v1/categories')
       .then(resp => resp.json())
-      .then(resp => setIds(resp))
+      .then(resp => setCategories(resp))
+
+    // console.log(categories.map(el => {
+    //   return el.name
+    // }).indexOf('sinks'))
+    console.log(window.location.pathname.substr(1) );
     
     
-     //////POBRAC TO WSZYSTKO TUTAJ DO STANU A POTEM PRZEMAPOWAC DO
-     //////LUDZKIEJ POSTACI KILKOMA KROKAMI JAK W LETSGO
-     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${ids[ids.filter()]}&limit=10`)
+     
+     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${stats.state.categoryID}&limit=10`)
      .then(resp => resp.json())
      .then(resp => setCategoryImgs(resp))
          
-       
+         
+ 
    }, [])
+
+   useEffect(() => {
+     
+   }, [categories]) 
  
   //useContext for incrementing seen pictures and updating state
    const {dispatch} = useContext(StatsContext)
