@@ -8,7 +8,6 @@ import ICategoryImgs from "../interfaces/ICategoryImgs";
 import ICategories from "../interfaces/ICategories";
 // Router
 import { useHistory } from "react-router-dom";
-import { useLocation } from "react-router"
 //Context
 import { StatsContext } from "../Context/StatsReducer";
 
@@ -33,23 +32,14 @@ const Category:React.FC = () =>  {
       .then(resp => resp.json())
       .then(resp => setCategories(resp))
 
-    // console.log(categories.map(el => {
-    //   return el.name
-    // }).indexOf('sinks'))
-    console.log(window.location.pathname.substr(1) );
-    
-    
-     
-     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${stats.state.categoryID}&limit=10`)
-     .then(resp => resp.json())
-     .then(resp => setCategoryImgs(resp))
-         
-         
- 
    }, [])
 
    useEffect(() => {
-     
+     fetch(`https://api.thecatapi.com/v1/images/search?category_ids=${categories.map(el => {
+      return el.name
+    }).indexOf(window.location.pathname.substr(1))}&limit=10`)
+     .then(resp => resp.json())
+     .then(resp => setCategoryImgs(resp))
    }, [categories]) 
  
   //useContext for incrementing seen pictures and updating state
