@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 //Router
 import { BrowserRouter, Route } from "react-router-dom";
 //Styles
@@ -14,18 +13,15 @@ import purrLogo from './assets/Logo.svg'
 import { StatsProvider } from "./Context/StatsReducer";
 
 
-/// first things ROUTING
-
 function App() {
-
 
   return (
     <BrowserRouter>
     <StatsProvider>
       <div className='App'>
-      <div className='logo'>
+      <a href="/" className='logo'>
         <img className='logoImg' src={purrLogo} alt="Purr App Logo" />
-      </div>
+      </a>
       <div>
         <Route exact component={Categories} path='/'/>
         <Route exact component={Category} path='/hats'/>
@@ -40,12 +36,12 @@ function App() {
       </div>
       </StatsProvider>
     </BrowserRouter>
+        );
+      }
+      
+      export default App;
         
         
         
         
 
-  );
-}
-
-export default App;

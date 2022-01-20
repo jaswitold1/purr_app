@@ -1,24 +1,26 @@
 import React, {createContext,useReducer} from 'react'
 import type {ReactNode} from 'react'
+//interfaces
 import IStatsContext from '../interfaces/IStatsContext';
+import ICategories from '../interfaces/ICategories';
 
-export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:'SKIPPED'} | {type:'RESET'} | {type:'PATH'} | {type:'CATEGORYID',payload:number}
+//type declarations
+export type Action = {type:'SEEN'}| {type:'PETTED'} | {type:'DIDNTPET'} | {type:'SKIPPED'} | {type:'RESET'} | {type:'PATH'} 
 export type State = IStatsContext
-
+//default state of the Context
 const defaultState:IStatsContext = {
     seen:1,
     didntPet:0,
     petted:0,
     skipped:0 ,
     path:'/',
-    categoryID:0
+    
 
 }
-
-
-
+//createContext
 export const StatsContext = createContext<{state:State,dispatch:React.Dispatch<Action>} >({state:defaultState, dispatch:()=>{}})
 
+//reducer
 function StatsReducer(state: State,action: Action ) {
     
     switch (action.type) {
@@ -45,7 +47,7 @@ function StatsReducer(state: State,action: Action ) {
             case 'RESET':
             return {
                 ...state,
-                seen:0,
+                seen:1,
                 didntPet:0,
                 petted:0,
                 skipped:0 ,
@@ -56,19 +58,16 @@ function StatsReducer(state: State,action: Action ) {
                 ...state,
                 path: window.location.pathname
             }
-            case 'CATEGORYID':
-            return {
-                ...state,
-                categoryID: action.payload
-            }
+            default:
+                return state    
         
-        default:
-            return state    
+            
+        }
+    }
+        
     
         
-    }
-}
-
+//provider
 export const StatsProvider = ({children}:{children:ReactNode}) => {
   const [state, dispatch] = useReducer(StatsReducer, defaultState)
 

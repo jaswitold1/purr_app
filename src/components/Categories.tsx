@@ -3,22 +3,17 @@ import {Link} from 'react-router-dom'
 //interface
 import  ICategories  from '../interfaces/ICategories';
 import IImgUrls from '../interfaces/IImgUrls';
-//Context
-import { StatsContext } from '../Context/StatsReducer';
 
 const Categories:React.FC = () => {
 const [categories, setCategories] = useState<ICategories[]>([])
 const [imgUrls, setImgUrls] = useState<IImgUrls[][]>([])
-
-///dispatch for categoryID
-const {dispatch} = useContext(StatsContext)
 
 /// useEffect fetch for categories
 useEffect(() => {
     fetch('https://api.thecatapi.com/v1/categories')
     .then(resp => resp.json())
     .then(resp => setCategories(resp))
-    
+    return setCategories([])
     
     
 }, [])
@@ -30,16 +25,8 @@ useEffect(() => {
         .then(resp => setImgUrls(prev => [...prev,[{body:resp,categoryName:element.name}]]))
 
 }) 
-
-        
 }, [categories])
-    
 
-
-
-
-
-        
     return (
         <ul className='categories'>
         
@@ -48,7 +35,7 @@ useEffect(() => {
                    return (
                        <Link to={{pathname:`${element[0].categoryName}`}}
                              key={element[0].categoryName} 
-                             onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}
+                            //  onClick={()=>dispatch({type:'CATEGORYID',payload:element[0].body[0].categories[0].id})}
                              style={{display:'flex',justifyContent:'center',alignItems:'end' ,position:'relative',height:'300px',width:'300px',margin:'10px'}}>
                                  
                            <span style={{backgroundColor:'white', padding:'10px 30%',marginBottom:'10px', borderRadius:'10px',fontWeight:'bold'}} >{element[0].categoryName}</span>
